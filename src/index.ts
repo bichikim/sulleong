@@ -3,7 +3,7 @@ import isNil from 'lodash/isNil'
 import isObject from 'lodash/isObject'
 import last from 'lodash/last'
 import trimStart from 'lodash/trimStart'
-export const swap = (data, map: PairMap, opposite: boolean = false, prePath = '') => {
+const sulleong = (data, map: PairMap, opposite: boolean = false, prePath = '') => {
   const mapper = (key) => {
     if(opposite){
       return map.toFrom(key)
@@ -16,12 +16,14 @@ export const swap = (data, map: PairMap, opposite: boolean = false, prePath = ''
     _value = value
     _key = trimStart(`${prePath}/${key}`, '/')
     if(isObject(value)){
-      _value = swap(value, map, opposite, _key)
+      _value = sulleong(value, map, opposite, _key)
     }
     result[mapper(_key)] = _value
   })
   return result
 }
+
+export default sulleong
 
 export interface IData {
   [key: string]: string

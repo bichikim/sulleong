@@ -1,4 +1,4 @@
-import {swap, PairMap} from './'
+import swap, {PairMap} from './'
 
 describe('swap', () => {
   it('can swap', () => {

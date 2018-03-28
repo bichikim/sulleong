@@ -1,4 +1,4 @@
-# ARE U?
+# Sulleong
 
 ![typescript][typescript]
 
@@ -7,91 +7,73 @@
 > Run time type checker
 
 ## Install
-``
-npm install --save areu
-``
+```bash
+yarn add sulleong
+npm install --save sulleong
+```
 
 ## How to use
 ````javascript
-// import {...} from 'areu'
-import {validate, array, any, object, boolean, number, string} from 'src/index'
 
-const data = {
-  age: 999,
-  name: 'foo',
-  bag: {
-    apple: true,
-    phone: false,
-    candy: ['ice', 'wine', 'banana'],
-    messages: [1, 'apple', 'you', 'can', 'eat']
-  }
-}
-
-const schema = object({
-  age: number().required(),
-  name: string().required(),
-  bag: object({
-    apple: boolean().required(),
-    phone: boolean(),
-    candy: array([string()]),
-    ham: boolean(),
-    messages: array([number().required(), string(), any()])
-  }).required(),
+import sulleong, {PairMap} from 'src/index'
+let map = new PairMap({
+  from1: 'to1',
+  from2: 'to2',
+  from3: 'to3',
 })
-/*
-interface Data{
-  age: number
-  name: string
-  bag: {
-    apple: boolean,
-    phone?: boolean,
-    candy: string[],
-    ham?: boolean,
-    message?: [number, string?, any, ...]
-  }
+let data = {
+  from1: 'data',
+  from2: 'data',
+  from3: 'data',
 }
-*/
-console.log(validate(data, schema)) // <== true
+const result = sulleong(data, map, false)
+expect(result).to.deep.equal({
+  to1: 'data',
+  to2: 'data',
+  to3: 'data',
+})
+const resultOpposite = sulleong(result, map, true)
+expect(resultOpposite).to.deep.equal(data)
 
+const map = new PairMap({
+  from1: 'to1',
+  fromDeep: {
+    '@': 'toDeep',
+    from2: 'to2',
+    from3: 'to3',
+    fromDeepDeep: {
+      '@': 'toDeepDeep',
+      from4: 'to4',
+      from5: 'to5',
+    },
+  },
+  from6: 'to6',
+})
+const data = {
+  from1: 'data',
+  fromDeep: {
+    from2: 'data',
+    from3: 'data',
+    fromDeepDeep: {
+      from4: 'data',
+      from5: 'data',
+    },
+  },
+  from6: 'data',
+}
+const result = sulleong(data, map, false)
+expect(result).to.deep.equal({
+  to1: 'data',
+  toDeep: {
+    to2: 'data',
+    to3: 'data',
+    toDeepDeep: {
+      to4: 'data',
+      to5: 'data',
+    },
+  },
+  to6: 'data',
+})
+const resultOpposite = sulleong(result, map, true)
+expect(resultOpposite).to.deep.equal(data)
 ````
-
-## Feature
-* check string type
-  * required
-  * email
-  * uuid
-  * testing regular expression 
-* check number
-  * required
-  * integer
-  * integerSafe
-  * min
-  * max
-* check object type
-  * required
-  * members type
-  * members type deeply 
-* check array type
-  * required
-  * length
-  * min
-  * max
-  * members type deeply
-  * members type by order
-  * members type continuously
-* check boolean
-  * required
-* check any
-  * required
-
-
-## Future Feature
-* extend schema
-* check string type
-  * html
-  * time
-  * address
-* check object type
-  * length
-  * max
-  * min
