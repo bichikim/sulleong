@@ -1,7 +1,7 @@
-import swap, {PairMap} from './'
+import sulleong, {PairMap} from './'
 
-describe('swap', () => {
-  it('can swap', () => {
+describe('sulleong', () => {
+  it('can sulleong', () => {
     let map = new PairMap({
       from1: 'to1',
       from2: 'to2',
@@ -12,13 +12,13 @@ describe('swap', () => {
       from2: 'data',
       from3: 'data',
     }
-    const result = swap(data, map, false)
+    const result = sulleong(data, map, false)
     expect(result).to.deep.equal({
       to1: 'data',
       to2: 'data',
       to3: 'data',
     })
-    const resultOpposite = swap(result, map, true)
+    const resultOpposite = sulleong(result, map, true)
     expect(resultOpposite).to.deep.equal(data)
   })
   it('can swap deeply', () => {
@@ -48,7 +48,7 @@ describe('swap', () => {
       },
       from6: 'data',
     }
-    const result = swap(data, map, false)
+    const result = sulleong(data, map, false)
     expect(result).to.deep.equal({
       to1: 'data',
       toDeep: {
@@ -61,7 +61,7 @@ describe('swap', () => {
       },
       to6: 'data',
     })
-    const resultOpposite = swap(result, map, true)
+    const resultOpposite = sulleong(result, map, true)
     expect(resultOpposite).to.deep.equal(data)
   })
 })
