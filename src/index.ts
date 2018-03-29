@@ -69,7 +69,7 @@ export class PairMap implements IPairMap {
   private _flat(data, prePath: IPrePath = {}, options: IPairMapOptions = {}) {
     const {pFrom = '', pTo = ''} = prePath
     const {selfFlag = '@'} = options
-    let _to, skip, enterDeep
+    let _to, skip, enterDeep, myFrom, myTo
     forEach(data, (to, from) => {
       _to = to
       skip = false
@@ -85,12 +85,14 @@ export class PairMap implements IPairMap {
       if(skip || from === selfFlag){
         return true
       }
-      this._from.push(trimStart(`${pFrom}/${from}`, '/'))
-      this._to.push(trimStart(`${pTo}/${_to}`, '/'))
+      myFrom = trimStart(`${pFrom}/${from}`, '/')
+      myTo = trimStart(`${pTo}/${_to}`, '/')
+      this._from.push(myFrom)
+      this._to.push(myTo)
       if(enterDeep){
         this._flat(to, {
-          pFrom: trimStart(`${pFrom}/${from}`, '/'),
-          pTo: trimStart(`${pTo}/${_to}`, '/'),
+          pFrom: myFrom,
+          pTo: myTo,
         }, options)
       }
     })

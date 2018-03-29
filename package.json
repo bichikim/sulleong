@@ -1,6 +1,6 @@
 {
   "name": "sulleong",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Change object key by key map",
   "author": "bichi",
   "main": "dist/app.js",
@@ -9,7 +9,6 @@
   "scripts": {
     "build": "./node_modules/.bin/babel-node build/build.js",
     "doc": "typedoc -out ./docs ./src --media ./media",
-    "test:bundel": "mocha ./test/bundle",
     "test:unit": "npm run unit",
     "unit": "karma start test/unit/karma.config.js",
     "unit:watch": "karma start test/unit/karma.config.js --auto-watch"
@@ -64,10 +63,10 @@
     "ts-loader": "^4.1.0",
     "tslint": "^5.9.1",
     "typedoc": "^0.11.1",
-    "typescript": "^2.7.2",
+    "typescript": "^2.8.1",
     "typescript-eslint-parser": "^14.0.0",
     "uglifyjs-webpack-plugin": "^1.2.4",
-    "webpack": "^4.1.1",
+    "webpack": "^4.3.0",
     "webpack-merge": "^4.1.2"
   },
   "dependencies": {
