@@ -1,7 +1,7 @@
 import sulleong, {PairMap} from './'
 
-describe('swap', () => {
-  it('can swap', () => {
+describe('sulleong', () => {
+  it('can sulleong', () => {
     let map = new PairMap({
       from1: 'to1',
       from2: 'to2',

@@ -3,7 +3,7 @@ import isNil from 'lodash/isNil'
 import isObject from 'lodash/isObject'
 import last from 'lodash/last'
 import trimStart from 'lodash/trimStart'
-const sulleong = (data, map: PairMap, opposite: boolean = false, prePath = '') => {
+const sulleong = (data, map: IPairMap, opposite: boolean = false, prePath = '') => {
   const mapper = (key) => {
     if(opposite){
       return map.toFrom(key)

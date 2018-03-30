@@ -4,7 +4,7 @@
 
 [typescript]:https://img.shields.io/badge/typescript-2.7.*-blue.svg
 
-> Run time type checker
+> Key changer
 
 ## Install
 ```bash
