@@ -9,7 +9,13 @@ const WebpackMerge = require('webpack-merge')
 // won't ues entry in karma test
 WebpackBaseConfig.entry = null
 module.exports = WebpackMerge(WebpackBaseConfig, {
+  /**
+   * Test in this project needs development
+   * For more info See this
+   * @link https://medium.com/webpack/webpack-4-mode-and-optimization-5423a6bc597a
+   */
   mode: 'development',
+  // for webpack karma debug
   devtool: 'inline-source-map',
   module: {
     rules: [
