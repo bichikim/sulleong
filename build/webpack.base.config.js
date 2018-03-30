@@ -5,12 +5,14 @@
  * @license Private
  */
 const path = require('path')
+const formatter = require('eslint-friendly-formatter')
 // const webpack = require('webpack')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 module.exports = {
+  target: 'node',
   entry: {
     app: ['./src/index.ts']
   },
@@ -30,6 +32,15 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        enforce: 'pre',
+        test: /\.(js|ts|vue)/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/,
+        options: {
+          formatter,
+        },
+      },
       {
         test: /\.ts$/,
         exclude: /node_modules/,

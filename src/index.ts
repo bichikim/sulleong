@@ -1,8 +1,4 @@
-import forEach from 'lodash/forEach'
-import isNil from 'lodash/isNil'
-import isObject from 'lodash/isObject'
-import last from 'lodash/last'
-import trimStart from 'lodash/trimStart'
+import {forEach, isNil, isObject, last, trimStart} from 'lodash'
 const sulleong = (data, map: IPairMap, opposite: boolean = false, prePath = '') => {
   const mapper = (key) => {
     if(opposite){
