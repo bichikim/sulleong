@@ -11,5 +11,6 @@ const nodeExternals = require('webpack-node-externals');
 WebpackBaseConfig.output.libraryTarget = 'umd' // module mode
 module.exports = WebpackMerge(WebpackBaseConfig, {
   mode: 'production',
+  // externals see https://www.npmjs.com/package/webpack-node-externals
   externals: [nodeExternals()]
 })
