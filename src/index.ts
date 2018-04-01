@@ -1,13 +1,22 @@
 import {forEach, isNil, isObject, last, trimStart} from 'lodash'
 const PATH_SEPARATOR = '/'
-const sulleong = (data, map: IPairMap, opposite: boolean = false, prePath = '') => {
-  const mapper = (key) => {
+interface IDeepObject {
+  [name: string]: any
+}
+
+const sulleong = (
+  data: IDeepObject,
+  map: IPairMap,
+  opposite: boolean = false,
+  prePath = '',
+): object => {
+  const mapper = (key: string) => {
     if(opposite){
       return map.toFrom(key)
     }
     return map.fromTo(key)
   }
-  const result = {}
+  const result: IDeepObject = {}
   let _value, _key
   forEach(data, (value, key: string) => {
     _value = value
@@ -64,7 +73,11 @@ export class PairMap implements IPairMap {
     return last(nextKey.split(PATH_SEPARATOR))
   }
 
-  private _flat(data, prePath: IPrePath = {}, options: IPairMapOptions = {}) {
+  private _flat(
+    data: IDeepObject,
+    prePath: IPrePath = {},
+    options: IPairMapOptions = {},
+    ) {
     const {pFrom = '', pTo = ''} = prePath
     const {selfFlag = '@'} = options
     let _to, skip, enterDeep, myFrom, myTo
