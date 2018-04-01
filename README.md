@@ -13,9 +13,9 @@ npm install --save sulleong
 ```
 
 ## How to use
-````javascript
+```javascript
 
-import sulleong, {PairMap} from 'src/index'
+import sulleong, {PairMap} from './src/index'
 let map = new PairMap({
   from1: 'to1',
   from2: 'to2',
@@ -76,4 +76,15 @@ expect(result).to.deep.equal({
 })
 const resultOpposite = sulleong(result, map, true)
 expect(resultOpposite).to.deep.equal(data)
-````
+```
+
+### PairMap Options
+```typescript
+interface IPairMap{
+  // set self identifier default = '@'
+  selfFlag? :string
+}
+```
+
+
+
