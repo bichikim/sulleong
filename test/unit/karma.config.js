@@ -23,7 +23,6 @@ module.exports = function(config) {
       '../../src/**/*.ts': ['webpack', 'sourcemap'],
       './specs/**/*.js': ['webpack', 'sourcemap'],
       './specs/**/*.ts': ['webpack', 'sourcemap'],
-      //'': ['webpack', 'sourcemap', 'coverage'],
     },
     coverageReporter: {
       dir: 'coverage/',
