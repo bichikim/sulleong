@@ -1,4 +1,5 @@
 import {forEach, isNil, isObject, last, trimStart} from 'lodash'
+const PATH_SEPARATOR = '/'
 const sulleong = (data, map: IPairMap, opposite: boolean = false, prePath = '') => {
   const mapper = (key) => {
     if(opposite){
@@ -10,7 +11,7 @@ const sulleong = (data, map: IPairMap, opposite: boolean = false, prePath = '') 
   let _value, _key
   forEach(data, (value, key: string) => {
     _value = value
-    _key = trimStart(`${prePath}/${key}`, '/')
+    _key = trimStart(`${prePath}${PATH_SEPARATOR}${key}`, PATH_SEPARATOR)
     if(isObject(value)){
       _value = sulleong(value, map, opposite, _key)
     }
@@ -19,6 +20,7 @@ const sulleong = (data, map: IPairMap, opposite: boolean = false, prePath = '') 
   return result
 }
 
+// noinspection JSUnusedGlobalSymbols
 export default sulleong
 
 export interface IData {
@@ -51,7 +53,7 @@ export class PairMap implements IPairMap {
     if(isNil(nextKey)){
       nextKey = keyName
     }
-    return last(nextKey.split('/'))
+    return last(nextKey.split(PATH_SEPARATOR))
   }
 
   fromTo(keyName: string): string {
@@ -59,7 +61,7 @@ export class PairMap implements IPairMap {
     if(isNil(nextKey)){
       nextKey = keyName
     }
-    return last(nextKey.split('/'))
+    return last(nextKey.split(PATH_SEPARATOR))
   }
 
   private _flat(data, prePath: IPrePath = {}, options: IPairMapOptions = {}) {
@@ -81,8 +83,8 @@ export class PairMap implements IPairMap {
       if(skip || from === selfFlag){
         return true
       }
-      myFrom = trimStart(`${pFrom}/${from}`, '/')
-      myTo = trimStart(`${pTo}/${_to}`, '/')
+      myFrom = trimStart(`${pFrom}${PATH_SEPARATOR}${from}`, PATH_SEPARATOR)
+      myTo = trimStart(`${pTo}${PATH_SEPARATOR}${_to}`, PATH_SEPARATOR)
       this._from.push(myFrom)
       this._to.push(myTo)
       if(enterDeep){
