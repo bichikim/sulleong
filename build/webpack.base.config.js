@@ -1,6 +1,5 @@
 const path = require('path')
 const formatter = require('eslint-friendly-formatter')
-// const webpack = require('webpack')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)

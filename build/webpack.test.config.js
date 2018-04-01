@@ -1,6 +1,6 @@
 const WebpackBaseConfig = require('./webpack.base.config')
 const WebpackMerge = require('webpack-merge')
-// won't ues entry in karma test
+//  karma test won't ues entry
 WebpackBaseConfig.entry = null
 module.exports = WebpackMerge(WebpackBaseConfig, {
   /**
