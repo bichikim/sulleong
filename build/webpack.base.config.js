@@ -1,9 +1,3 @@
-/**
- *
- * @author Bichi Kim [bichi@pjfactory.com]
- * @copyright (c) PJ Factory Co.
- * @license Private
- */
 const path = require('path')
 const formatter = require('eslint-friendly-formatter')
 // const webpack = require('webpack')
@@ -11,6 +5,7 @@ const formatter = require('eslint-friendly-formatter')
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
+// noinspection JSUnusedGlobalSymbols
 module.exports = {
   target: 'node',
   entry: {
