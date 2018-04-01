@@ -16,6 +16,7 @@ module.exports = WebpackMerge(WebpackBaseConfig, {
       {
         test: /\.js$|\.ts$/,
         use: {
+          // for karma coverage
           loader: 'istanbul-instrumenter-loader',
           options: { esModules: true }
         },
