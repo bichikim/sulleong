@@ -1,5 +1,4 @@
 const WebpackBaseConfig = require('./webpack.base.config')
-// const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const WebpackMerge = require('webpack-merge')
 const nodeExternals = require('webpack-node-externals');
 WebpackBaseConfig.output.libraryTarget = 'umd' // module mode
