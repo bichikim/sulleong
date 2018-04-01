@@ -21,7 +21,7 @@ describe('sulleong', () => {
     const resultOpposite = sulleong(result, map, true)
     expect(resultOpposite).to.deep.equal(data)
   })
-  it('can swap deeply', () => {
+  it('can sulleong deeply', () => {
     const map = new PairMap({
       from1: 'to1',
       fromDeep: {
