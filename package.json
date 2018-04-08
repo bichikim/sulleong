@@ -9,8 +9,9 @@
   "scripts": {
     "build": "babel-node build/build.js",
     "doc": "typedoc -out ./docs ./src --media ./media",
-    "test:bundel": "mocha ./test/bundle",
-    "test:unit": "karma start test/unit/karma.config.js",
+    "test": "karma start test/unit/karma.config.js --browsers=PhantomJS --single-run",
+    "test:bundle": "karma start test/unit/karma.bundle.config.js --single-run",
+    "test:unit": "karma start test/unit/karma.config.js --single-run",
     "test:unit-watch": "karma start test/unit/karma.config.js --auto-watch"
   },
   "repository": {

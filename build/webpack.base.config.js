@@ -1,12 +1,10 @@
 const path = require('path')
+const webpack = require('webpack')
 const formatter = require('eslint-friendly-formatter')
-
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
-// noinspection JSUnusedGlobalSymbols
 module.exports = {
-  target: 'node',
   entry: {
     app: ['./src/index.ts']
   },
@@ -24,6 +22,11 @@ module.exports = {
       '~~': resolve('./')
     },
   },
+  // plugins: [
+  //   new webpack.DefinePlugin({
+  //     // ... nothing to add so far
+  //   }),
+  // ],
   module: {
     rules: [
       {
@@ -51,6 +54,11 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: 'babel-loader',
+      },
+      {
+        test: /\.vue$/,
+        exclude: /node_modules/,
+        loader: 'vue-loader',
       },
     ]
   },
