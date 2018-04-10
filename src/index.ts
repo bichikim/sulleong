@@ -77,7 +77,7 @@ export class PairMap implements IPairMap {
     data: IDeepObject,
     prePath: IPrePath = {},
     options: IPairMapOptions = {},
-    ) {
+  ) {
     const {pFrom = '', pTo = ''} = prePath
     const {selfFlag = '@'} = options
     let _to, skip, enterDeep, myFrom, myTo

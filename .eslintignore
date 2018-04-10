@@ -1,6 +1,3 @@
-build/*.js
-config/*.js
 public/*.js
 dist/*.js
-_removed/*.js
 

@@ -1,12 +1,21 @@
-const WebpackBaseConfig = require('./webpack.base.config')
-const WebpackMerge = require('webpack-merge')
-const nodeExternals = require('webpack-node-externals');
-WebpackBaseConfig.output.libraryTarget = 'umd' // module mode
-module.exports = WebpackMerge(WebpackBaseConfig, {
+const webpackBaseConfig = require('./webpack.base.config')
+const webpackMerge = require('webpack-merge')
+module.exports = webpackMerge(webpackBaseConfig, {
+  output: {
+    libraryTarget: 'umd',
+  },
   mode: 'production',
   /**
    * externals see
    * @link https://www.npmjs.com/package/webpack-node-externals
    */
-  externals: [nodeExternals()]
+  externals: {
+    externals: {
+      lodash: {
+        commonjs: 'lodash',
+        amd: 'lodash',
+        root: '_',
+      },
+    },
+  },
 })
