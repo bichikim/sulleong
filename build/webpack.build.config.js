@@ -4,6 +4,7 @@ module.exports = webpackMerge(webpackBaseConfig, {
   output: {
     libraryTarget: 'umd',
   },
+  devtool: 'source-map',
   mode: 'production',
   /**
    * externals see
