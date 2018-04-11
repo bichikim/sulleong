@@ -5,9 +5,8 @@ flow-typed/npm/
 
 ## bundle folders
 public/
-#dist/
 
-## docs
+## documents
 docs/
 
 ## log directories and files
